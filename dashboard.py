@@ -15,8 +15,15 @@ st.title("NDVI Analysis - Team Rocket")
 # --- INITIALIZE GEE ---
 @st.cache_resource
 def init_gee():
+    service_account = 'your-service-account@sanzzakbj.iam.gserviceaccount.com'
+    credentials = ee.ServiceAccountCredentials(service_account, 'keyjson.json')
+    ee.Initialize(credentials)
+
+@st.cache_resource
+def init_gee():
     try:
         ee.Initialize(project='sanzzakbj')
+        
     except:
         ee.Authenticate()
         ee.Initialize(project='sanzzakbj')
