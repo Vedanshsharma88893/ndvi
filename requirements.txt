@@ -1,0 +1,10 @@
+streamlit
+pandas
+numpy
+# add whatever your app needs
+ee
+folium
+streamlit_folium
+datetime
+plotly.express
+altair
