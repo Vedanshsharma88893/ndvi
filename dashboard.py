@@ -15,7 +15,7 @@ st.title("NDVI Analysis - Team Rocket")
 # --- INITIALIZE GEE ---
 @st.cache_resource
 def init_gee():
-    service_account = 'your-service-account@sanzzakbj.iam.gserviceaccount.com'
+    service_account = 'firebase-adminsdk-4l72c@sanzzakbj.iam.gserviceaccount.com'
     credentials = ee.ServiceAccountCredentials(service_account, 'keyjson.json')
     ee.Initialize(credentials)
 
