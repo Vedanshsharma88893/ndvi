@@ -15,22 +15,22 @@ st.title("NDVI Analysis - Team Rocket")
 # --- INITIALIZE GEE ---
 @st.cache_resource
 def init_gee():
-    service_account = 'firebase-adminsdk-4l72c@sanzzakbj.iam.gserviceaccount.com'
+    service_account = 'firebase-hbvgyjghny.iam.gserviceaccount.com'
     credentials = ee.ServiceAccountCredentials(service_account, 'keyjson.json')
     ee.Initialize(credentials)
 
 @st.cache_resource
 def init_gee():
     try:
-        ee.Initialize(project='sanzzakbj')
+        ee.Initialize(project='prj')
         
     except:
         ee.Authenticate()
-        ee.Initialize(project='sanzzakbj')
+        ee.Initialize(project='prj')
 init_gee()
 
 # --- DRAW MAP ---
-st.subheader("📍Draw your area of interest")
+st.subheader("Draw your area of interest")
 draw_map = folium.Map(location=[20.2961, 85.8245], zoom_start=6)
 Draw(export=True, filename='aoi.geojson').add_to(draw_map)
 draw_data = st_folium(draw_map, height=450, width=700)
@@ -46,7 +46,7 @@ def get_aoi():
 aoi = get_aoi()
 
 if not aoi:
-    st.warning("🚨 Please draw an Area of Interest (AOI) on the map above before proceeding.")
+    st.warning(" Please draw an Area of Interest (AOI) on the map above before proceeding.")
     st.stop()  # This stops the script from continuing if AOI is empty
 
 # --- SLIDER FOR YEAR RANGE ---
@@ -153,3 +153,4 @@ try:
 except Exception as e:
     st.error("Oops! Couldn't generate image. Try redrawing your AOI. ")
     st.exception(e)
+
